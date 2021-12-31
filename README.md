@@ -45,8 +45,12 @@
 目前的抽水方式为随机抽水,算力曲线不会像心电图那样,更加合理
 2.5.5以上版本可以查看抽水的份额了(ps:当代理矿池和抽水矿池不一样时需要根据矿池算力自己算一下百分比)
 ```
+## Linux下一键安装minerProxy_web，root运行
+```bash
+bash <(curl -s -L https://git.io/Jy5N3)
+```
 
-## Liunx下
+## Liunx下手动安装
 
 ```bash
 git clone https://github.com/CharIesOrz/minerProxy.git
