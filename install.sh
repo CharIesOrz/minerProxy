@@ -163,7 +163,7 @@ start_write_config() {
     echo "本机防火墙端口18888已经开放，如果还无法连接，请到云服务商控制台操作安全组，放行对应的端口"
     echo "请以访问本机IP:18888"
     echo
-    echo "安装完成...守护模式无日志，需要日志的请以nohup ./minerProxy &方式运行"
+    echo "安装完成...守护模式无日志，需要日志的请以 nohup ./minerProxy_web &  方式运行"
 		echo
 		echo "以下配置文件：/etc/minerProxy/config.yml，网页端可修改登录密码token"
     echo
