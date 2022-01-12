@@ -49,8 +49,8 @@ else
 
 fi
 
-if [ ! -d "/etc/minerProxy_web/" ]; then
-    mkdir /etc/minerProxy_web/
+if [ ! -d "/etc/minerProxy/" ]; then
+    mkdir /etc/minerProxy/
 fi
 
 error() {
@@ -58,7 +58,7 @@ error() {
 }
 
 install_download() {
-		installPath="/etc/minerProxy_web"
+		installPath="/etc/minerProxy"
     if [[ $cmd == "apt-get" ]]; then
         $cmd install -y supervisor
         service supervisor restart
@@ -69,7 +69,7 @@ install_download() {
         systemctl enable supervisord
         service supervisord restart
     fi
-    [ -d ./minerProxy_web ] && rm -rf ./minerProxy_web
+    [ -d ./minerProxy ] && rm -rf ./minerProxy
     git clone https://github.com/CharIesOrz/minerProxy.git
 
     if [[ ! -d ./minerProxy ]]; then
@@ -80,7 +80,7 @@ install_download() {
         echo
         exit 1
     fi
-    cp -rf ./minerProxy_web /etc/
+    cp -rf ./minerProxy /etc/
     if [[ ! -d $installPath ]]; then
         echo
         echo -e "$red 复制文件出错了...$none"
@@ -163,9 +163,9 @@ start_write_config() {
     echo "本机防火墙端口18888已经开放，如果还无法连接，请到云服务商控制台操作安全组，放行对应的端口"
     echo "请以访问本机IP:18888"
     echo
-    echo "安装完成...守护模式无日志，需要日志的请以nohup ./minerProxy_web &方式运行"
+    echo "安装完成...守护模式无日志，需要日志的请以nohup ./minerProxy &方式运行"
 		echo
-		echo "以下配置文件：/etc/minerProxy_web/config.yml，网页端可修改登录密码token"
+		echo "以下配置文件：/etc/minerProxy/config.yml，网页端可修改登录密码token"
     echo
     echo "[*---------]"
     sleep  1
@@ -178,7 +178,7 @@ start_write_config() {
     echo "[*****-----]"
     sleep  1
     echo "[******----]"
-    cat /etc/minerProxy_web/config.yml
+    cat /etc/minerProxy/config.yml
     echo
     echo "----------------------------------------------------------------"
     
@@ -191,11 +191,11 @@ start_write_config() {
 uninstall() {
     clear
     if [ -d "/etc/supervisor/conf/" ]; then
-        rm /etc/supervisor/conf/minerProxy_web.conf -f
+        rm /etc/supervisor/conf/minerProxy.conf -f
     elif [ -d "/etc/supervisor/conf.d/" ]; then
-        rm /etc/supervisor/conf.d/minerProxy_web.conf -f
+        rm /etc/supervisor/conf.d/minerProxy.conf -f
     elif [ -d "/etc/supervisord.d/" ]; then
-        rm /etc/supervisord.d/minerProxy_web.ini -f
+        rm /etc/supervisord.d/minerProxy.ini -f
     fi
     supervisorctl reload
     echo -e "$yellow 已关闭自启动${none}"
@@ -204,7 +204,7 @@ uninstall() {
 clear
 while :; do
     echo
-    echo "....... minerProxy_web 一键安装脚本 ......."
+    echo "....... minerProxy 一键安装脚本 ......."
     echo
     echo " 1. 开始安装 + 自动运行"
     echo
