@@ -204,7 +204,7 @@ uninstall() {
 clear
 while :; do
     echo
-    echo "....... minerProxy 一键安装脚本 ......."
+    echo "....... minerProxy_web 一键安装脚本 ......."
     echo
     echo " 1. 开始安装 + 自动运行"
     echo
