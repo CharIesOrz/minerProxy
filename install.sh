@@ -72,7 +72,7 @@ install_download() {
     [ -d ./minerProxy_web ] && rm -rf ./minerProxy_web
     git clone https://github.com/CharIesOrz/minerProxy.git
 
-    if [[ ! -d ./minerProxy_web ]]; then
+    if [[ ! -d ./minerProxy ]]; then
         echo
         echo -e "$red 克隆脚本仓库出错了...$none"
         echo
